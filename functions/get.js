@@ -1,3 +1,6 @@
+const https = require('https');
+const url = require('url');
+
 exports.handler = async ( event , context, callback ) => 
 { 
     getRequest( event.queryStringParameters.url, function( err, resp ){
