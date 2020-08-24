@@ -46,7 +46,7 @@ function getRequest(urlStr, callback) {
           callback(null, {
             statusCode: 200,
             headers: {
-            //   'content-type': 'application/json',
+              'content-type': 'application/json',
               'Access-Control-Allow-Origin': '*',
             },
             body: rawData,
