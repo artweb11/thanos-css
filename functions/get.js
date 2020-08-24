@@ -3,15 +3,8 @@ const url = require('url');
 
 exports.handler = async ( event , context, callback ) => 
 { 
-    getRequest( event.queryStringParameters.url, function( err, resp ){
-        if( err ){ callback(null, {
-                statusCode: 200,
-                body: err
-            });
-        }
-
-        callback( null, resp );
-    } );
+    console.log('url: ', event.queryStringParameters.url );
+    getRequest( event.queryStringParameters.url, callback );
 }
 
 function getRequest(url, callback) {
