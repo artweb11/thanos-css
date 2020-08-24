@@ -2,7 +2,7 @@
 
     document.querySelector('#form').addEventListener('submit', function(e){
         e.preventDefault();
-        var url = '/.netlify/functions/get?url='+document.querySelector('#web').value;
+        var url = '/.netlify/functions/get?url='+document.querySelector('#web').value.replace('http://', 'https://');
 
         var cs = window.getComputedStyle( document.querySelector('#site'), false );
         var w = parseInt( cs.getPropertyValue('width') );
