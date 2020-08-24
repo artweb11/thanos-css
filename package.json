@@ -1,0 +1,20 @@
+{
+  "name": "thanos-css",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run": "http-server . -p 3005"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artweb11/thanos-css.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artweb11/thanos-css/issues"
+  },
+  "homepage": "https://github.com/artweb11/thanos-css#readme"
+}
