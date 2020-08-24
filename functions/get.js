@@ -13,7 +13,7 @@ exports.handler = async ( event , context, callback ) =>
 }
 
 function preflight(callback) {
-    callback(null, {
+    callback( null, {
       statusCode: 204,
       headers: {
         'content-type': 'application/json',
@@ -27,7 +27,7 @@ function preflight(callback) {
 function getRequest(urlStr, callback) {
     const clientReq = https.request(
       {
-        url.parse( urlStr ),
+        ...url.parse( urlStr ),
         headers: {
           'Content-Type': 'application/json',
         },
