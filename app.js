@@ -1,6 +1,7 @@
 (function(){
 
-    document.querySelector('#submit').addEventListener('click', function(){
+    document.querySelector('#form').addEventListener('submit', function(e){
+        e.preventDefault();
         var url = document.querySelector('#web').value;
 
         var cs = window.getComputedStyle( document.querySelector('#site'), false );
