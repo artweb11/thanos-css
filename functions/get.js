@@ -1,7 +1,7 @@
 const https = require('https');
 const url = require('url');
 
-exports.handler = async ( event , context, callback ) => 
+exports.handler = ( event , context, callback ) => 
 { 
     if (event.httpMethod === 'OPTIONS') {
         preflight(callback);
