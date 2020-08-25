@@ -2,7 +2,7 @@ const chromium = require('chrome-aws-lambda');
 
 exports.handler = async (event, context) => {
 
-    const params = JSON.parse(event.body);
+    // const params = JSON.parse(event.body);
     const pageToScreenshot = event.queryStringParameters.url;
     // params.pageToScreenshot;
     const w = event.queryStringParameters.width || 1024;
