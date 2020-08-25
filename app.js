@@ -5,6 +5,8 @@
         var u = document.querySelector('#web').value;
         if( u.indexOf('http://') != -1 ){
             u = u.replace('http://', 'https://');
+        } else if( u.indexOf('https://') != -1 ){
+            u = u;
         } else {
             u = 'https://'+u;
         }
