@@ -2,7 +2,8 @@
 
     document.querySelector('#form').addEventListener('submit', function(e){
         e.preventDefault();
-        var url = '/.netlify/functions/screenshot?url='+document.querySelector('#web').value.replace('http://', 'https://');
+        var u = document.querySelector('#web').value.replace('http://', 'https://');
+        var url = 'http://thanos-css.netlify.app/.netlify/functions/screenshot?url='+u;
 
         var cs = window.getComputedStyle( document.querySelector('#site'), false );
         var w = parseInt( cs.getPropertyValue('width') );
@@ -10,9 +11,20 @@
         console.log( w, h );
         url += '&width='+w+'&height='+h;
 
-        document.querySelector('#site').innerHTML = '<iframe id="ifr" src="'+url+'" width="'+w+'px" height="100%" frameborder="0" onload="loadIFR()"></iframe>';
+        /*
+        document.querySelector('#site').innerHTML = '<iframe id="ifr" src="'+url+'" width="'+w+'px" height="100%" frameborder="0" onload="loadIFR()"></iframe>';*/
 
-        document.body.classList.add('loaded');
+        fetch( url, {
+            method: "GET",
+        }).then(function( e ){
+            console.log( e );
+
+            document.body.classList.add('loaded');
+            window.real.classList.add('halved');
+        });
+        
+
+        
         window.real = document.body;
 
         window.loadIFR = function(){

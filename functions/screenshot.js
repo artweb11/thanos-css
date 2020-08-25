@@ -33,6 +33,7 @@ exports.handler = async (event, context) => {
   
     return {
         headers: {
+            "Access-Control-Allow-Origin": "*",
             "content-type": "image/png"
         },
         statusCode: 200,
