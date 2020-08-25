@@ -2,7 +2,10 @@ const chromium = require('chrome-aws-lambda');
 
 exports.handler = async (event, context) => {
 
-    const pageToScreenshot = JSON.parse(event.body).pageToScreenshot;
+    const params = JSON.parse(event.body);
+    const pageToScreenshot = params.pageToScreenshot;
+    const w = params.width || 1024;
+    const h = params.height || 768;
 
     const browser = await chromium.puppeteer.launch({
         executablePath: await chromium.executablePath,
@@ -12,6 +15,12 @@ exports.handler = async (event, context) => {
     });
     
     const page = await browser.newPage();
+
+    await page.setViewport({
+        width: w,
+        height: h,
+        deviceScaleFactor: 1,
+    });
 
     await page.goto(pageToScreenshot);
 
