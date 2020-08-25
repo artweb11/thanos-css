@@ -64,6 +64,11 @@
             
         }).catch( function( e ){
             alert('The site took more than 10 seconds to load. Please try another site.');
+
+            document.body.classList.remove('loading');
+            document.body.classList.remove('loaded');
+            document.body.classList.remove('halved');
+            document.body.classList.remove('thanos');
         });
         
 
