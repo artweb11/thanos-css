@@ -21,10 +21,10 @@ exports.handler = async (event, context) => {
   
     return {
         headers: {
-            'content-type': 'image/png',
+            "content-type": "image/png"
         },
         statusCode: 200,
-        body: screenshot )
+        body: screenshot
     }
 
 }
