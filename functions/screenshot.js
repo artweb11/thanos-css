@@ -5,8 +5,8 @@ exports.handler = async (event, context) => {
     // const params = JSON.parse(event.body);
     const pageToScreenshot = event.queryStringParameters.url;
     // params.pageToScreenshot;
-    const w = event.queryStringParameters.width || 1024;
-    const h = event.queryStringParameters.height || 768;
+    const w = parseInt( event.queryStringParameters.width ) || 1024;
+    const h = parseInt( event.queryStringParameters.height ) || 768;
 
     const browser = await chromium.puppeteer.launch({
         executablePath: await chromium.executablePath,
