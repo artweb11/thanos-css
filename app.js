@@ -17,7 +17,6 @@
         fetch( url, {
             method: "GET",
         }).then( function(r){
-            console.log( r );
             return r.arrayBuffer()}
         )        
         .then( function( ab ){
@@ -43,6 +42,8 @@
         
             document.body.classList.add('loaded');
             window.real.classList.add('halved');
+        }).catch( function( e ){
+            console.log( e );
         });
         
 
