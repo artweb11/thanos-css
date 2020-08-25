@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "npm install",
     "run": "http-server . -p 3005"
   },
   "repository": {
@@ -13,6 +14,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "chrome-aws-lambda": "^5.2.1",
+    "puppeteer-core": "^5.2.1"
+  },
   "bugs": {
     "url": "https://github.com/artweb11/thanos-css/issues"
   },
