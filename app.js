@@ -54,7 +54,11 @@
                 window.real.classList.add('halved');
 
                 setTimeout( function(){
-                    disintegrate( ctx, ~~(w/2), h, 4, 4, function(){
+                    var sz = 4;
+                    if( w> 1600 ){
+                        sz = 10;
+                    }
+                    disintegrate( ctx, ~~(w/2), h, sz, sz, function(){
                         document.body.classList.add('thanos');
                     } );
                 }, 1000 );
