@@ -24,6 +24,8 @@ exports.handler = async (event, context) => {
 
     await page.goto(pageToScreenshot);
 
+    await page.waitFor(1000);
+
     const screenshot = await page.screenshot({ encoding: 'base64' });
 
     await browser.close();
