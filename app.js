@@ -8,7 +8,7 @@
         } else {
             u = 'https://'+u;
         }
-        var url = 'http://thanos-css.netlify.app/.netlify/functions/screenshot?url='+u;
+        var url = '/.netlify/functions/screenshot?url='+u;
 
         var cs = window.getComputedStyle( document.querySelector('#site'), false );
         var w = parseInt( cs.getPropertyValue('width') );
