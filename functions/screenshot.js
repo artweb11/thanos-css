@@ -2,6 +2,21 @@ const chromium = require('chrome-aws-lambda');
 
 exports.handler = async (event, context) => {
 
+    const headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+    };
+      
+    if (event.httpMethod !== 'POST') {
+        // To enable CORS
+        return {
+        statusCode: 200, // <-- Important!
+        headers,
+        body: 'This was not a POST request!'
+        };
+    }
+
     // const params = JSON.parse(event.body);
     const pageToScreenshot = event.queryStringParameters.url;
     // params.pageToScreenshot;

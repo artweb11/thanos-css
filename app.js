@@ -16,9 +16,31 @@
 
         fetch( url, {
             method: "GET",
-        }).then(function( e ){
-            console.log( e );
+        }).then( function(r){
+            console.log( r );
+            return r.arrayBuffer()}
+        )        
+        .then( function( ab ){
+            return URL.createObjectURL( new Blob( [ ab ], { type: 'image/png' } ) )
+        })
+        .then(function( src ){
+            var img = document.createElement('img');
+            img.src = src;
 
+            img.onload = function(){
+                var c = document.createElement('canvas');
+                c.width = ~~(w/2);
+                c.height = h;
+                c.style.cssText = 'position: absolute; right:0;top:0;';
+                document.querySelector('#clone').appendChild( c );
+
+                var ctx = c.getContext('2d');
+                ctx.drawImage( img, ~~(w/2), 0, w, h, 0, 0, w, h );
+            }
+
+            document.querySelector('#site').appendChild( img );
+
+        
             document.body.classList.add('loaded');
             window.real.classList.add('halved');
         });
