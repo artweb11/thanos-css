@@ -20,11 +20,11 @@ exports.handler = async (event, context) => {
     await browser.close();
   
     return {
+        headers: {
+            'content-type': 'image/png',
+        },
         statusCode: 200,
-        body: JSON.stringify({ 
-            message: `Complete screenshot of ${pageToScreenshot}`, 
-            buffer: screenshot 
-        })
+        body: screenshot )
     }
 
 }
