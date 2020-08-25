@@ -15,7 +15,7 @@ exports.handler = async (event, context) => {
 
     await page.goto(pageToScreenshot);
 
-    const screenshot = await page.screenshot({ encoding: 'binary' });
+    const screenshot = await page.screenshot({ encoding: 'base64' });
 
     await browser.close();
   
@@ -24,7 +24,8 @@ exports.handler = async (event, context) => {
             "content-type": "image/png"
         },
         statusCode: 200,
-        body: screenshot
+        body: screenshot,
+        isBase64Encoded: true
     }
 
 }
