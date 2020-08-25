@@ -63,7 +63,8 @@ h1 {
 }
 p {
     font-size: 1.8rem;
-    color: #999;
+    font-weight: 600;
+    color: #e0e0e0;
 }
 
 .input {
@@ -136,7 +137,7 @@ input:-internal-autofill-selected {
     z-index: 1000;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%) scale(1.4);
     animation: hide 2s 0.4s ease-out;
     animation-fill-mode: forwards;
 }
@@ -196,4 +197,24 @@ input:-internal-autofill-selected {
     width: 50%;
     height: 100%;
     overflow: hidden;
+}
+#clone:after {
+    position: absolute;
+    content: '';
+    background: url(finish.jpg) center center no-repeat;
+    top: 50%;
+    left: 50%;
+    width: 30vw;
+    height: calc( 0.5611907 * 30vw );
+    background-size: 30vw auto;
+
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.4s 0s ease;
+    transform: translate(0,-100vh);
+}
+
+.thanos #clone:after {
+    opacity: 0.7;
+    transform: translate(-50%,-50%);
 }

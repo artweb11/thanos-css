@@ -2,13 +2,18 @@
 
     document.querySelector('#form').addEventListener('submit', function(e){
         e.preventDefault();
-        var u = document.querySelector('#web').value.replace('http://', 'https://');
+        var u = document.querySelector('#web').value;
+        if( u.indexOf('http://') != -1 ){
+            u = u.replace('http://', 'https://');
+        } else {
+            u = 'https://'+u;
+        }
         var url = 'http://thanos-css.netlify.app/.netlify/functions/screenshot?url='+u;
 
         var cs = window.getComputedStyle( document.querySelector('#site'), false );
         var w = parseInt( cs.getPropertyValue('width') );
         var h = parseInt( cs.getPropertyValue('height') );
-        console.log( w, h );
+        // console.log( w, h );
         url += '&width='+w+'&height='+h;
 
         /*
@@ -47,7 +52,9 @@
                 window.real.classList.add('halved');
 
                 setTimeout( function(){
-                    disintegrate( ctx, ~~(w/2), h, 4, 4 );
+                    disintegrate( ctx, ~~(w/2), h, 4, 4, function(){
+                        document.body.classList.add('thanos');
+                    } );
                 }, 1000 );
             }
 
@@ -68,7 +75,7 @@
         }
     }, false);
 
-    function disintegrate( ctx, w, h, cols, rows ){
+    function disintegrate( ctx, w, h, cols, rows, cb ){
         var mx = Math.ceil(w/cols);
         var my = Math.ceil(h/rows);
         var cw = Math.ceil( w/mx );
@@ -109,6 +116,8 @@
 
             if( ct > 0 ){
                 requestAnimationFrame( anim );
+            } else {
+                cb.call();
             }
 
         }
