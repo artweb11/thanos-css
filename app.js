@@ -56,7 +56,7 @@
                 setTimeout( function(){
                     var sz = 4;
                     if( w> 1600 ){
-                        sz = 10;
+                        sz = 12;
                     }
                     disintegrate( ctx, ~~(w/2), h, sz, sz, function(){
                         document.body.classList.add('thanos');
@@ -100,7 +100,7 @@
 
         for( var i=0; i<my; i++){
             for( var j=0; j<mx; j++){
-                arr.push( {x: j*cw, y: i*ch, val: Math.random()*15, dissapeared: false });
+                arr.push( {x: j*cw, y: i*ch, val: Math.random()*15, dissapeared: ((j<3 && Math.random()<0.5)? true : false) });
             }
         }
 
@@ -116,7 +116,7 @@
             // }
             for( var i in arr ){
                 arr[i].val -= 0.12;
-                if( arr[i].val < 1 ){
+                if( arr[i].val < 1 && !arr[i].dissapeared ){
                     //ctx.fillRect( arr[i].x, arr[i].y, cw, ch );
                     ctx.putImageData( imd, arr[i].x, arr[i].y );
                     arr[i].dissapeared = true;
